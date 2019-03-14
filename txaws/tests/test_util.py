@@ -1,4 +1,5 @@
 from six.moves.urllib.parse import urlparse
+from binascii import unhexlify
 
 from twisted.trial.unittest import TestCase
 
@@ -9,12 +10,12 @@ class MiscellaneousTestCase(TestCase):
 
     def test_hmac_sha1(self):
         cases = [
-            ("0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b".decode("hex"),
-             "Hi There", "thcxhlUFcmTii8C2+zeMjvFGvgA="),
-            ("Jefe", "what do ya want for nothing?",
-             "7/zfauXrL6LSdBbV8YTfnCWafHk="),
-            ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa".decode("hex"),
-             "\xdd" * 50, "El1zQrmsEc2Ro5r0iqF7T2PxddM="),
+            (unhexlify("0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b"),
+             b"Hi There", b"thcxhlUFcmTii8C2+zeMjvFGvgA="),
+            (b"Jefe", b"what do ya want for nothing?",
+             b"7/zfauXrL6LSdBbV8YTfnCWafHk="),
+            (unhexlify("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),
+             b"\xdd" * 50, b"El1zQrmsEc2Ro5r0iqF7T2PxddM="),
             ]
 
         for key, data, expected in cases:
