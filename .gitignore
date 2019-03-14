@@ -1,4 +1,5 @@
 *.egg-info/
 .testrepository
 .venv-*
+__pycache__
 _trial_temp/

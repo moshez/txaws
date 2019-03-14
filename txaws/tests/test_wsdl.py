@@ -333,7 +333,7 @@ class SequenceSchemaTestCase(WsdlBaseTestCase):
         schema = SequenceSchema("foo", NodeSchema("item", [LeafSchema("bar")]))
         foo = SequenceItem(schema)
         foo.append().bar = "egg"
-        self.assertEqual("<foo><item><bar>egg</bar></item></foo>",
+        self.assertEqual(b"<foo><item><bar>egg</bar></item></foo>",
                          etree.tostring(schema.dump(foo)))
 
     def test_dump_with_many_items(self):
