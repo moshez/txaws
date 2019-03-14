@@ -11,7 +11,7 @@ try:
     from setuptools import find_packages
     extra_setup_args['install_requires'] = [
         'attrs', 'python-dateutil', 'twisted[tls]>=15.5.0', 'venusian', 'lxml',
-        'incremental', 'pyrsistent', 'constantly',
+        'incremental', 'pyrsistent', 'constantly', 'six',
     ]
 except ImportError:
     def find_packages():
