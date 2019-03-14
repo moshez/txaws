@@ -80,11 +80,11 @@ def parse(url, defaultPort=True):
     url = url.strip()
     parsed = urlparse(url)
     scheme = parsed[0]
-    path = urlunparse(("", "") + parsed[2:])
+    path = urlunparse((b"", b"") + parsed[2:])
     host = parsed[1]
 
-    if ":" in host:
-        host, port = host.split(":")
+    if b":" in host:
+        host, port = host.split(b":")
         try:
             port = int(port)
         except ValueError:
@@ -95,11 +95,11 @@ def parse(url, defaultPort=True):
             port = None
 
     if port is None and defaultPort:
-        if scheme == "https":
+        if scheme == b"https":
             port = 443
         else:
             port = 80
 
-    if path == "":
-        path = "/"
+    if path == b"":
+        path = b"/"
     return (str(scheme), str(host), port, str(path))
